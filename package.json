@@ -50,5 +50,15 @@
     "rimraf": "^3.0.2",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "yarn format"
+    ]
   }
 }
