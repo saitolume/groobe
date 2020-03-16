@@ -37,19 +37,16 @@ app.prepare().then(() => {
   server.post(
     '/sign-in-with-apple/callback',
     express.urlencoded({ extended: true }),
-    (req: Request, res: Response) => {
-      passport.authenticate('apple', (_, profile) => {
-        req.logIn(profile, () => {
-          res.redirect('/')
-        })
-      })(req, res)
+    passport.authenticate('apple', { failureRedirect: '/' }),
+    (req, res) => {
+      res.redirect('/')
     }
   )
 
   server.get('/sign-in-with-spotify', passport.authenticate('spotify'))
   server.get(
     '/sign-in-with-spotify/callback',
-    passport.authenticate('spotify', { scope: [] }),
+    passport.authenticate('spotify', { scope: [], failureRedirect: '/' }),
     (req, res) => {
       res.redirect('/')
     }
