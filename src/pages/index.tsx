@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { SessionNextPage } from 'next'
 import Link from 'next/link'
 import styled from 'styled-components'
+import Head from '../components/Head'
 import Layout from '../components/Layout'
 import SignInWithApple from '../components/SignInWithApple'
 import SignInWithSpotify from '../components/SignInWithSpotify'
@@ -10,25 +11,28 @@ const Index: SessionNextPage = ({ currentUser }) => {
   useEffect(() => console.log(currentUser), [currentUser])
 
   return (
-    <Layout>
-      <Hero>
-        <HeroTitle>好きな音楽を誰とでも</HeroTitle>
-        <HeroText>
-          groobe は、サービスを越えてあなたのプレイリストを共有できる音楽共有 SNS です。
-        </HeroText>
-        <TermText>
-          <UnderLineText>利用規約</UnderLineText>に同意してアカウントを作成
-        </TermText>
-        <SignUpButtonList>
-          <Link href="/sign-in-with-apple">
-            <SignInWithApple />
-          </Link>
-          <Link href="/sign-in-with-spotify">
-            <SignInWithSpotify />
-          </Link>
-        </SignUpButtonList>
-      </Hero>
-    </Layout>
+    <>
+      <Head />
+      <Layout>
+        <Hero>
+          <HeroTitle>好きな音楽を誰とでも</HeroTitle>
+          <HeroText>
+            groobe は、サービスを越えてあなたのプレイリストを共有できる音楽共有 SNS です。
+          </HeroText>
+          <TermText>
+            <UnderLineText>利用規約</UnderLineText>に同意してアカウントを作成
+          </TermText>
+          <SignUpButtonList>
+            <Link href="/sign-in-with-apple">
+              <SignInWithApple />
+            </Link>
+            <Link href="/sign-in-with-spotify">
+              <SignInWithSpotify />
+            </Link>
+          </SignUpButtonList>
+        </Hero>
+      </Layout>
+    </>
   )
 }
 
