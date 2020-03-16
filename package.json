@@ -1,5 +1,6 @@
 {
   "name": "groobe",
+  "description": "Share your playlist beyond subscription service",
   "version": "1.0.0",
   "private": true,
   "scripts": {
