@@ -1,12 +1,13 @@
-import express, { Request, Response, NextFunction } from 'express'
+import express, { Request, Response } from 'express'
 import session from 'express-session'
 import http from 'http'
 import next from 'next'
 import passport from 'passport'
 import uid from 'uid-safe'
 import { appleStrategy } from './strategies/apple'
+import { spotifyStrategy } from './strategies/spotify'
 import { env } from '../constants/env'
-import { Profile, UserRepository } from '../domains/user'
+import { UserRepository, AppleProfile } from '../domains/user'
 import { firestore } from '../lib/firebase'
 
 const { PORT, IS_DEV } = env
@@ -30,6 +31,7 @@ app.prepare().then(() => {
   passport.serializeUser((user, done) => done(null, user))
   passport.deserializeUser((user, done) => done(null, user))
   passport.use(appleStrategy)
+  passport.use(spotifyStrategy)
 
   server.use(passport.initialize())
   server.use(passport.session())
@@ -38,14 +40,23 @@ app.prepare().then(() => {
   server.post(
     '/sign-in-with-apple/callback',
     express.urlencoded({ extended: true }),
-    (req: Request, res: Response, next: NextFunction) => {
-      passport.authenticate('apple', (_, profile: Profile) => {
+    (req: Request, res: Response) => {
+      passport.authenticate('apple', (_, profile: AppleProfile) => {
         req.logIn(profile, async () => {
           const user = await userRepository.find({ id: profile.id })
-          if (!user) await userRepository.create({ profile })
+          if (!user) await userRepository.create({ profile, type: 'apple' })
           res.redirect('/')
         })
-      })(req, res, next)
+      })(req, res)
+    }
+  )
+
+  server.get('/sign-in-with-spotify', passport.authenticate('spotify'))
+  server.get(
+    '/sign-in-with-spotify/callback',
+    passport.authenticate('spotify', { scope: [] }),
+    (req, res) => {
+      res.redirect('/')
     }
   )
 
