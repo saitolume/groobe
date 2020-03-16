@@ -1,22 +1,13 @@
-const {
-  PORT,
-  NODE_ENV,
-  DOMAIN_DEVELOPMENT,
-  DOMAIN_PRODUCTION,
-  DATABSE_URL,
-  APPLE_CLIENT_ID,
-  APPLE_TEAM_ID,
-  APPLE_KEY_ID
-} = process.env
+const withImages = require('next-images')
 
-module.exports = {
+module.exports = withImages({
   env: {
-    PORT: PORT ? Number(PORT) : 3000,
-    IS_DEV: NODE_ENV !== 'production',
-    DOMAIN: (NODE_ENV === 'production' ? DOMAIN_PRODUCTION : DOMAIN_DEVELOPMENT) || '',
-    DATABSE_URL: DATABSE_URL || '',
-    APPLE_CLIENT_ID: APPLE_CLIENT_ID || '',
-    APPLE_KEY_ID: APPLE_KEY_ID || '',
-    APPLE_TEAM_ID: APPLE_TEAM_ID || ''
+    PORT: process.env.PORT ? Number(process.env.PORT) : 3000,
+    IS_DEV: process.env.NODE_ENV !== 'production',
+    DOMAIN: (process.env.NODE_ENV === 'production' ? process.env.DOMAIN_PRODUCTION : process.env.DOMAIN_DEVELOPMENT) || '',
+  },
+  esModule: true,
+  webpack(config) {
+    return config
   }
-}
+})
