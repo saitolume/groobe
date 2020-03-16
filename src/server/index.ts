@@ -7,13 +7,10 @@ import uid from 'uid-safe'
 import { appleStrategy } from './strategies/apple'
 import { spotifyStrategy } from './strategies/spotify'
 import { env } from '../constants/env'
-import { UserRepository, AppleProfile } from '../domains/user'
-import { firestore } from '../lib/firebase'
 
 const { PORT, IS_DEV } = env
 const app = next({ dev: IS_DEV })
 const handle = app.getRequestHandler()
-const userRepository = new UserRepository(firestore)
 
 const sessionConfig = {
   secret: uid.sync(18),
@@ -41,10 +38,8 @@ app.prepare().then(() => {
     '/sign-in-with-apple/callback',
     express.urlencoded({ extended: true }),
     (req: Request, res: Response) => {
-      passport.authenticate('apple', (_, profile: AppleProfile) => {
-        req.logIn(profile, async () => {
-          const user = await userRepository.find({ id: profile.id })
-          if (!user) await userRepository.create({ profile, type: 'apple' })
+      passport.authenticate('apple', (_, profile) => {
+        req.logIn(profile, () => {
           res.redirect('/')
         })
       })(req, res)
