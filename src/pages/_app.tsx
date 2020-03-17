@@ -1,5 +1,7 @@
 import React from 'react'
 import { SessionAppContext } from 'next/app'
+import { ThemeProvider } from 'styled-components'
+import { theme } from '../constants/theme'
 import { CurrentUser, UserService } from '../domains/user'
 import { axios } from '../lib/axios'
 import '../assets/styles/common.css'
@@ -9,7 +11,9 @@ const App = ({
   currentUser,
   ...pageProps
 }: SessionAppContext & { currentUser?: CurrentUser }) => (
-  <Component currentUser={currentUser} {...pageProps} />
+  <ThemeProvider theme={theme}>
+    <Component currentUser={currentUser} {...pageProps} />
+  </ThemeProvider>
 )
 
 App.getInitialProps = async ({ Component, ctx }: SessionAppContext) => {
