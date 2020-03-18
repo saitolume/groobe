@@ -2,7 +2,8 @@ export const theme = {
   color: {
     black: '#222',
     white: '#fff',
-    gray: '#eee'
+    gray: '#eee',
+    hoverd: '#efefefef'
   }
 } as const
 
