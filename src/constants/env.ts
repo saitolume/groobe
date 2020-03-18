@@ -12,9 +12,9 @@ type Env = {
 
 export const env: Env = {
   PORT: process.env.PORT ? Number(process.env.PORT) : 9000,
-  IS_DEV: process.env.IS_DEV !== 'false',
+  IS_DEV: process.env.NODE_ENV !== 'production',
   DOMAIN:
-    (process.env.IS_DEV !== 'false'
+    (process.env.NODE_ENV !== 'production'
       ? process.env.DOMAIN_DEVELOPMENT
       : process.env.DOMAIN_PRODUCTION) || '',
   DATABSE_URL: process.env.DATABSE_URL || '',
