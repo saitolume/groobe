@@ -27,11 +27,12 @@ const Img = styled.div<Pick<Props, 'circle' | 'hoverable' | 'src'>>`
   ${({ hoverable }) =>
     hoverable &&
     css`
-    cursor: pointer;
-    transition: filter 0.15s;
-    &:hover {
-      filter: brightness(0.9);
-  `}
+      cursor: pointer;
+      transition: filter 0.15s;
+      &:hover {
+        filter: brightness(0.9);
+      }
+    `}
 `
 
 export default Thumbnail
