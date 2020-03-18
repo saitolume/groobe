@@ -7,7 +7,7 @@ import Thumbnail from './common/Thumbnail'
 import { CurrentUser } from '../domains/user'
 
 type Props = {
-  currentUser?: CurrentUser
+  currentUser: CurrentUser
   close: (event?: MouseEvent) => void
 }
 
@@ -32,10 +32,10 @@ const NavigationPopper: React.FC<Props> = ({ currentUser, close }) => {
 
   return createPortal(
     <Wrapper ref={ref}>
-      <Link href="/users/[id]" as={`/users/${currentUser?.id}`}>
+      <Link href="/users/[id]" as={`/users/${currentUser.id}`}>
         <UserInfo>
-          <UserThumbnail src={currentUser?.imageUrl} circle />
-          <UserName>{currentUser?.name}</UserName>
+          <UserThumbnail src={currentUser.imageUrl} circle />
+          <UserName>{currentUser.name}</UserName>
         </UserInfo>
       </Link>
       <Link href="/settings/profile">

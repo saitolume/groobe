@@ -43,10 +43,10 @@ const Header: React.FC<Props> = ({ currentUser }) => {
               circle
               hoverable
             />
+            {isPopperDisplayed && (
+              <NavigationPopper currentUser={currentUser} close={closeNavigationPopper} />
+            )}
           </>
-        )}
-        {isPopperDisplayed && (
-          <NavigationPopper currentUser={currentUser} close={closeNavigationPopper} />
         )}
       </Navigation>
     </Wrapper>
