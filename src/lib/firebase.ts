@@ -1,11 +1,12 @@
 import * as admin from 'firebase-admin'
 import { env } from '../constants/env'
-import serviceAccount from '../../config/serviceAccount.json'
+
+const { DATABSE_URL, FIREBASE_CONFIG } = env
 
 if (!admin.apps.length) {
   admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
-    databaseURL: env.DATABSE_URL
+    credential: admin.credential.cert(JSON.parse(FIREBASE_CONFIG) as admin.ServiceAccount),
+    databaseURL: DATABSE_URL
   })
 }
 
