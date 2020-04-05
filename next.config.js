@@ -1,4 +1,5 @@
 const withImages = require('next-images')
+const path = require('path')
 
 module.exports = withImages({
   env: {
@@ -7,7 +8,8 @@ module.exports = withImages({
     DOMAIN_DEVELOPMENT: process.env.DOMAIN_DEVELOPMENT
   },
   esModule: true,
-  webpack(config) {
+  webpack(config, options) {
+    config.resolve.alias['~'] = path.join(__dirname, 'src')
     return config
   }
 })
