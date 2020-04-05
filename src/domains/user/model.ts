@@ -1,6 +1,7 @@
 export type User = {
   id: string
   name: string
+  biography: string
   type: 'apple' | 'spotify'
   imageUrl: string
 }

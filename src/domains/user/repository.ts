@@ -18,6 +18,7 @@ export class UserRepository {
     const user: User = {
       id: profile.id,
       name: '',
+      biography: '',
       type,
       imageUrl: ''
     }
