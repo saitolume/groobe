@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Thumbnail from './common/Thumbnail'
-import { Playlist } from '../domains/playlist'
+import Thumbnail from '~/components/common/Thumbnail'
+import { Playlist } from '~/domains/playlist'
 
 type Props = {
   className?: string
@@ -41,6 +41,9 @@ const Time = styled.small`
 const Title = styled.div`
   width: 100%;
   font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `
 
 export default PlaylistThumbnail

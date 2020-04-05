@@ -2,9 +2,9 @@ import React, { useCallback, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import styled from 'styled-components'
-import Icon from './common/Icon'
-import Thumbnail from './common/Thumbnail'
-import { CurrentUser } from '../domains/user'
+import Icon from '~/components/common/Icon'
+import Thumbnail from '~/components/common/Thumbnail'
+import { CurrentUser } from '~/domains/user'
 
 type Props = {
   currentUser: CurrentUser

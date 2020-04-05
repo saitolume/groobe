@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios'
-import { User } from './model'
-import { UsersResponse } from './types'
+import { User } from '~/domains/user/model'
+import { UsersResponse } from '~/domains/user/types'
 
 export class UserService {
   private fetch: AxiosInstance

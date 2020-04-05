@@ -56,6 +56,7 @@ const Header: React.FC<Props> = ({ currentUser }) => {
 const Wrapper = styled.header`
   width: 100%;
   height: 64px;
+  box-shadow: 0 0 12px #00000030;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;

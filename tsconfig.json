@@ -10,7 +10,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
-    "paths": { "*": ["types/*"] },
+    "paths": { "*": ["types/*"], "~/*": ["src/*"] },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,

@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import MDIIcon from '@mdi/react'
 import styled, { css } from 'styled-components'
-import { icon, IconName } from '../../constants/icon'
+import { icon, IconName } from '~/constants/icon'
 
 type Props = {
   className?: string

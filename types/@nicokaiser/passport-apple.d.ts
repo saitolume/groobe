@@ -1,4 +1,4 @@
-import { AppleProfile } from '../../src/domains/user'
+import { AppleProfile } from '~/domains/user'
 
 declare module '@nicokaiser/passport-apple' {
   import { IncomingMessage } from 'http'

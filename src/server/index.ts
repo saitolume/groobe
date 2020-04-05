@@ -4,9 +4,9 @@ import http from 'http'
 import next from 'next'
 import passport from 'passport'
 import uid from 'uid-safe'
-import { appleStrategy } from './strategies/apple'
-import { spotifyStrategy } from './strategies/spotify'
-import { env } from '../constants/env'
+import { appleStrategy } from '~/server/strategies/apple'
+import { spotifyStrategy } from '~/server/strategies/spotify'
+import { env } from '~/constants/env'
 
 const { PORT, IS_DEV } = env
 const app = next({ dev: IS_DEV })

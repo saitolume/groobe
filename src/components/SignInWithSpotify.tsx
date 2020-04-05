@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import spotifyLogo from '../assets/images/spotify-logo.png'
+import spotifyLogo from '~/assets/images/spotify-logo.png'
 
 type Props = {
   onClick?: () => void

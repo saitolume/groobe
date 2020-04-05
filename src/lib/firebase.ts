@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin'
-import { env } from '../constants/env'
+import { env } from '~/constants/env'
 
 const { DATABSE_URL, FIREBASE_CONFIG } = env
 

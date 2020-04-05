@@ -1,7 +1,7 @@
 import { Strategy } from 'passport-spotify'
-import { env } from '../../constants/env'
-import { UserRepository } from '../../domains/user'
-import { firestore } from '../../lib/firebase'
+import { env } from '~/constants/env'
+import { UserRepository } from '~/domains/user'
+import { firestore } from '~/lib/firebase'
 
 const { DOMAIN, IS_DEV, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } = env
 const userRepository = new UserRepository(firestore)

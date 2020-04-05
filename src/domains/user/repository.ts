@@ -1,5 +1,5 @@
 import { firestore } from 'firebase-admin'
-import { User, Profile } from './model'
+import { User, Profile } from '~/domains/user/model'
 
 export class UserRepository {
   private ref: firestore.CollectionReference

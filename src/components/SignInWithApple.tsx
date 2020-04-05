@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import appleLogo from '../assets/images/apple-logo.png'
+import appleLogo from '~/assets/images/apple-logo.png'
 
 type Props = {
   onClick?: () => void

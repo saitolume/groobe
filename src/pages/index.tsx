@@ -1,11 +1,11 @@
 import React from 'react'
 import { NextPage } from 'next'
 import styled from 'styled-components'
-import Head from '../components/common/Head'
-import Layout from '../components/common/Layout'
-import SignInWithApple from '../components/SignInWithApple'
-import SignInWithSpotify from '../components/SignInWithSpotify'
-import { useCurrentUser } from '../hooks/useCurrentUser'
+import Head from '~/components/common/Head'
+import Layout from '~/components/common/Layout'
+import SignInWithApple from '~/components/SignInWithApple'
+import SignInWithSpotify from '~/components/SignInWithSpotify'
+import { useCurrentUser } from '~/hooks/useCurrentUser'
 
 const Index: NextPage = () => {
   const currentUser = useCurrentUser()

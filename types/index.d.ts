@@ -1,7 +1,7 @@
 import { NextComponentType, NextPageContext } from 'next'
 import { AppContext } from 'next/app'
 import { IncomingMessage } from 'http'
-import { Profile, CurrentUser } from '../src/domains/user'
+import { Profile, CurrentUser } from '~/domains/user'
 
 declare module 'next/app' {
   interface SessionAppContext extends AppContext {

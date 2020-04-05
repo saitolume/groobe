@@ -1,7 +1,7 @@
 import AppleStrategy from '@nicokaiser/passport-apple'
-import { env } from '../../constants/env'
-import { UserRepository } from '../../domains/user'
-import { firestore } from '../../lib/firebase'
+import { env } from '~/constants/env'
+import { UserRepository } from '~/domains/user'
+import { firestore } from '~/lib/firebase'
 
 const { DOMAIN, APPLE_AUTH_KEY, APPLE_CLIENT_ID, APPLE_KEY_ID, APPLE_TEAM_ID } = env
 const userRepository = new UserRepository(firestore)

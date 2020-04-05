@@ -1,5 +1,5 @@
 import React, { useContext, createContext, useState } from 'react'
-import { CurrentUser } from '../domains/user'
+import { CurrentUser } from '~/domains/user'
 
 const CurrentUserContext = createContext<CurrentUser | undefined>(undefined)
 

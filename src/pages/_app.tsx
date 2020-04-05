@@ -2,11 +2,11 @@ import React from 'react'
 import { SessionAppContext } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import { Normalize } from 'styled-normalize'
-import { theme } from '../constants/theme'
-import { UserService } from '../domains/user'
-import { CurrentUserProvider } from '../hooks/useCurrentUser'
-import { axios } from '../lib/axios'
-import '../assets/styles/common.css'
+import { theme } from '~/constants/theme'
+import { UserService } from '~/domains/user'
+import { CurrentUserProvider } from '~/hooks/useCurrentUser'
+import { axios } from '~/lib/axios'
+import '~/assets/styles/common.css'
 
 const App = ({ Component, currentUser, ...pageProps }: SessionAppContext) => (
   <ThemeProvider theme={theme}>

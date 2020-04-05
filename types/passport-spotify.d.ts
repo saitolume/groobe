@@ -1,4 +1,4 @@
-import { SpotifyProfile } from '../src/domains/user/model'
+import { SpotifyProfile } from '~/domains/user/model'
 
 declare module 'passport-spotify' {
   type Options = {

@@ -1,4 +1,4 @@
-import { Track } from '../track/model'
+import { Track } from '~/domains/track/model'
 
 export type Playlist = {
   id: string
