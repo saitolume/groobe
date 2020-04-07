@@ -46,7 +46,10 @@ app.prepare().then(() => {
   server.get('/sign-in-with-spotify', passport.authenticate('spotify'))
   server.get(
     '/sign-in-with-spotify/callback',
-    passport.authenticate('spotify', { scope: [], failureRedirect: '/' }),
+    passport.authenticate('spotify', {
+      scope: ['playlist-read-collaborative', 'playlist-read-private'],
+      failureRedirect: '/'
+    }),
     (req, res) => {
       res.redirect('/')
     }
