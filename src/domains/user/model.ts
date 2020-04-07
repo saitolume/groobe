@@ -1,8 +1,10 @@
+import { Service } from '~/domains/service'
+
 export type User = {
   id: string
   name: string
   biography: string
-  type: 'apple' | 'spotify'
+  type: Service['type']
   imageUrl: string
 }
 
@@ -41,4 +43,4 @@ export type SpotifyProfile = {
 
 export type Profile = AppleProfile | SpotifyProfile
 
-export type CurrentUser = User & { sccessToken: string }
+export type CurrentUser = User & { accessToken: string }
