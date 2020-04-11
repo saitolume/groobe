@@ -3,8 +3,8 @@ import { NextPage } from 'next'
 import styled from 'styled-components'
 import Head from '~/components/common/Head'
 import Layout from '~/components/common/Layout'
-import SignInWithApple from '~/components/SignInWithApple'
-import SignInWithSpotify from '~/components/SignInWithSpotify'
+import ContinueWithApple from '~/components/ContinueWithApple'
+import ContinueWithSpotify from '~/components/ContinueWithSpotify'
 import { useCurrentUser } from '~/hooks/useCurrentUser'
 
 const Index: NextPage = () => {
@@ -23,8 +23,8 @@ const Index: NextPage = () => {
             <UnderLineText>利用規約</UnderLineText>に同意してアカウントを作成
           </TermText>
           <SignUpButtonList>
-            <SignInWithApple />
-            <SignInWithSpotify />
+            <ContinueWithApple />
+            <ContinueWithSpotify />
           </SignUpButtonList>
         </Hero>
       </Layout>

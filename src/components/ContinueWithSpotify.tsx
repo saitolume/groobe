@@ -1,18 +1,18 @@
 import React, { forwardRef } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import appleLogo from '~/assets/images/apple-logo.png'
+import spotifyLogo from '~/assets/images/spotify-logo.png'
 
 type Props = {
   onClick?: () => void
   href?: string
 }
 
-const SignInWithApple = forwardRef<HTMLAnchorElement, Props>(({ onClick, href }, ref) => (
-  <Link href="/sign-in-with-apple">
+const SignInWithSpotify = forwardRef<HTMLAnchorElement, Props>(({ onClick, href }, ref) => (
+  <Link href="/sign-in-with-spotify">
     <Wrapper href={href} onClick={onClick} ref={ref}>
-      <Logo src={appleLogo} alt="apple logo" />
-      <Text>Sign up with Apple</Text>
+      <Logo src={spotifyLogo} alt="spotify logo" />
+      <Text>Continue with Spotify</Text>
     </Wrapper>
   </Link>
 ))
@@ -20,7 +20,7 @@ const SignInWithApple = forwardRef<HTMLAnchorElement, Props>(({ onClick, href },
 const Wrapper = styled.a`
   width: 340px;
   height: 56px;
-  background-color: #000;
+  background-color: #fff;
   border-radius: 6px;
   cursor: pointer;
   display: flex;
@@ -28,15 +28,15 @@ const Wrapper = styled.a`
 `
 
 const Logo = styled.img`
-  height: 100%;
-  margin: auto 0 auto 32px;
+  height: 65%;
+  margin: auto 0 auto auto;
 `
 
 const Text = styled.div`
-  color: #fff;
+  color: #1db954;
   font-size: 24px;
   line-height: 24px;
-  margin: auto auto auto 8px;
+  margin: auto auto auto 16px;
 `
 
-export default SignInWithApple
+export default SignInWithSpotify
