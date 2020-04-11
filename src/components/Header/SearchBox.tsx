@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Icon from '~/components/common/Icon'
 import TextField from '~/components/common/TextField'
+import Button from '../common/Button'
 
 type Props = {
   className?: string
@@ -16,33 +17,49 @@ const SearchBox: React.FC<Props> = ({ className }) => {
 
   const search = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    console.log(`Search by ${word}`)
   }
 
   return (
     <Wrapper className={className} onSubmit={search}>
-      <SearchIcon name="search" />
-      <SearchField type="search" value={word} onChange={handleChangeSearchField} />
+      <SearchField
+        type="search"
+        value={word}
+        onChange={handleChangeSearchField}
+        placeholder="プレイリスト、曲、アーティストで検索"
+      />
+      <SearchButton dark flat>
+        <SearchIcon name="search" color="#fff" />
+      </SearchButton>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.form`
   height: 40px;
-  position: relative;
+  display: flex;
 `
 
 const SearchIcon = styled(Icon)`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto 0 auto 8px;
+  margin: auto;
 `
 
 const SearchField = styled(TextField)`
-  width: 500px;
+  width: 600px;
   height: 100%;
-  background-color: ${({ theme }) => theme.color.gray};
-  padding-left: 36px;
+  border: ${({ theme }) => `1px solid ${theme.color.black}`};
+  border-radius: 4px 0 0 4px;
+  outline: none;
+`
+
+const SearchButton = styled(Button)`
+  width: 56px;
+  height: 100%;
+  background-color: ${({ theme }) => theme.color.black};
+  border-radius: 0 4px 4px 0;
+  display: flex;
+  justify-content: center;
+  padding: 0;
 `
 
 export default SearchBox

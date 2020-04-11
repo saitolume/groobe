@@ -8,10 +8,10 @@ type Props = {
   currentUser?: CurrentUser
 }
 
-const Layout: React.FC<Props> = ({ children, currentUser }) => (
+const Layout: React.FC<Props> = ({ children, className, currentUser }) => (
   <Wrapper>
     <Header currentUser={currentUser} />
-    <Main>{children}</Main>
+    <Main className={className}>{children}</Main>
   </Wrapper>
 )
 
@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 
 const Main = styled.main`
   width: 100%;
-  height: 100%;
+  min-height: calc(100vh - 64px); /* header height */
 `
 
 export default Layout

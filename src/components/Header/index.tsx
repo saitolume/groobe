@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import Button from '~/components/common/Button'
 import Icon from '~/components/common/Icon'
 import Thumbnail from '~/components/common/Thumbnail'
-import NavigationPopper from '~/components/NavigationPopper'
-import SearchBox from '~/components/SearchBox'
+import NavigationPopper from '~/components/Header/NavigationPopper'
+import SearchBox from '~/components/Header/SearchBox'
 import { CurrentUser } from '~/domains/user'
 
 type Props = {
@@ -30,7 +30,7 @@ const Header: React.FC<Props> = ({ currentUser }) => {
       <Link href="/">
         <Title>groobe</Title>
       </Link>
-      <SearchBox />
+      <PlaylistSearchBox />
       <Navigation>
         {currentUser && (
           <>
@@ -58,11 +58,12 @@ const Header: React.FC<Props> = ({ currentUser }) => {
 const Wrapper = styled.header`
   width: 100%;
   height: 64px;
-  /* box-shadow: 0 0 12px #00000030; */
+  background-color: ${({ theme }) => theme.color.white};
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  padding: 12px 32px;
+  padding: 0 32px;
+  position: relative;
 `
 
 const Title = styled.a`
@@ -73,17 +74,24 @@ const Title = styled.a`
   font-weight: bold;
 `
 
+const PlaylistSearchBox = styled(SearchBox)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`
+
 const Navigation = styled.nav`
   display: flex;
 `
 
 const SubmitButton = styled(Button)`
-  height: 100%;
+  height: 40px;
   border-radius: 25px;
   box-sizing: border-box;
   display: flex;
   margin: auto 12px auto 0;
-  padding: 0 20px;
+  padding: 0 18px;
   &:last-child {
     margin: auto 0;
   }
@@ -96,6 +104,7 @@ const SubmitButtonText = styled.span`
 const UserThumbnail = styled(Thumbnail)`
   width: 40px;
   height: 40px;
+  margin: auto 0;
 `
 
 export default Header

@@ -29,7 +29,6 @@ const StyledButton = styled.button<Pick<Props, 'color' | 'dark' | 'flat'>>`
   color: ${({ dark }) => (dark ? '#fff' : '#222')};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   font-weight: 550;
-  padding: 12px 24px;
   transition: filter 0.15s;
   &:hover {
     filter: ${({ disabled }) => (disabled ? '' : 'brightness(0.9)')};

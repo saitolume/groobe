@@ -20,13 +20,16 @@ const PlaylistThumbnail: React.FC<Props> = ({ playlist }) => (
 
 const Wrapper = styled.div`
   cursor: pointer;
-  margin-bottom: 4px;
+  border-radius: 4px;
+  box-shadow: 0 0 12px #00000020;
+  margin-bottom: 8px;
   position: relative;
 `
 
 const StyledThummbnail = styled(Thumbnail)`
   width: 200px;
   height: 200px;
+  border-radius: 6px;
 `
 
 const Time = styled.small`
@@ -40,7 +43,6 @@ const Time = styled.small`
 
 const Title = styled.div`
   width: 100%;
-  font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

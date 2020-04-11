@@ -14,7 +14,7 @@ const Input = styled.input`
   caret-color: #222;
   cursor: ${({ disabled }) => disabled && 'not-allowed'};
   font-size: 18px;
-  padding: 16px;
+  padding: 4px 10px;
 `
 
 export default TextField
