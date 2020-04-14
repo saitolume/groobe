@@ -1,4 +1,6 @@
+export * from './action'
 export * from './model'
+export * from './reducer'
 export * from './repository'
 export * from './service'
 export * from './types'

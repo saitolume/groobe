@@ -1,10 +1,24 @@
-import { mdiCloudUpload, mdiCog, mdiLogoutVariant, mdiMagnify, mdiPlaylistMusic } from '@mdi/js'
+import {
+  mdiAccount,
+  mdiBell,
+  mdiCloudUpload,
+  mdiCog,
+  mdiLink,
+  mdiLogoutVariant,
+  mdiMagnify,
+  mdiPlaylistMusic,
+  mdiVolumeOff
+} from '@mdi/js'
 
 export const icon = {
+  bell: mdiBell,
   cog: mdiCog,
+  link: mdiLink,
+  mute: mdiVolumeOff,
   playlist: mdiPlaylistMusic,
   search: mdiMagnify,
   signOut: mdiLogoutVariant,
+  user: mdiAccount,
   upload: mdiCloudUpload
 }
 

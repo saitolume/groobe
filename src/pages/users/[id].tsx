@@ -1,9 +1,9 @@
 import React from 'react'
 import { NextPage, GetServerSideSessionProps } from 'next'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import Button from '~/components/common/Button'
 import Head from '~/components/common/Head'
-import Icon from '~/components/common/Icon'
 import Layout from '~/components/common/Layout'
 import Thumbnail from '~/components/common/Thumbnail'
 import PlaylistThumbnail from '~/components/PlaylistThumbnail'
@@ -17,33 +17,43 @@ type Props = {
 }
 
 const UsersShow: NextPage<Props> = ({ user, playlists }) => {
-  const currentUser = useCurrentUser()
+  const { currentUser } = useCurrentUser()
+  const router = useRouter()
+  const isMe = user?.id === currentUser?.id
+
+  const goToProfileEditPage = async () => {
+    router.push('/settings/profile')
+  }
 
   return (
     <>
       <Head title={user?.name} />
-      <Layout currentUser={currentUser}>
+      <Wrapper currentUser={currentUser}>
         <Hero />
-        <Container>
-          <UserThumbnail src={user?.imageUrl} circle />
-          <UserInfo>
-            <FlexBox>
-              <UserName>{user?.name}</UserName>
-              <FollowButton>フォロー</FollowButton>
-            </FlexBox>
-            <Biography>{user?.biography}</Biography>
-          </UserInfo>
-          <SubTitle>
-            <Icon name="playlist" />
-            プレイリスト
-          </SubTitle>
+        <UserSection>
+          <UserContainer>
+            <UserThumbnail src={user?.imageUrl} circle />
+            <UserInfo>
+              <FlexBox>
+                <UserName>{user?.name}</UserName>
+                {isMe ? (
+                  <ActionButton onClick={goToProfileEditPage}>プロフィールを編集</ActionButton>
+                ) : (
+                  <ActionButton>フォロー</ActionButton>
+                )}
+              </FlexBox>
+              <Biography>{user?.biography}</Biography>
+            </UserInfo>
+          </UserContainer>
+        </UserSection>
+        <PlaylistSection>
           <PlaylistBox>
             {playlists.map(playlist => (
               <PlaylistThumbnail key={playlist.id} playlist={playlist} />
             ))}
           </PlaylistBox>
-        </Container>
-      </Layout>
+        </PlaylistSection>
+      </Wrapper>
     </>
   )
 }
@@ -74,14 +84,26 @@ export const getServerSideProps: GetServerSideSessionProps = async ({ query, req
   return { props: { user, playlists } }
 }
 
-const Hero = styled.div`
-  width: 100%;
-  height: 160px;
-  background-color: ${({ theme }) => theme.color.gray};
+const Wrapper = styled(Layout)`
+  background-color: ${({ theme }) => theme.color.white};
 `
 
-const Container = styled.div`
+const Hero = styled.div`
+  width: 100%;
+  height: 20vh;
+  background-color: ${({ theme }) => theme.color.lightGray};
+`
+
+const UserSection = styled.section`
+  width: 100%;
+  background-color: ${({ theme }) => theme.color.white};
+  margin-bottom: 64px;
+`
+
+const UserContainer = styled.div`
   width: 1240px;
+  height: 100%;
+  background-color: ${({ theme }) => theme.color.white};
   margin: 0 auto;
   position: relative;
 `
@@ -96,17 +118,17 @@ const UserThumbnail = styled(Thumbnail)`
 `
 
 const UserInfo = styled.div`
-  width: 100%;
-  height: 128px;
+  width: calc(100% - 174px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin: 0 0 100px 174px;
+  margin-left: 174px;
   padding: 16px;
 `
 
 const FlexBox = styled.div`
   display: flex;
+  margin-bottom: 16px;
 `
 
 const UserName = styled.div`
@@ -116,11 +138,12 @@ const UserName = styled.div`
   margin-right: 24px;
 `
 
-const FollowButton = styled(Button)`
-  width: 165px;
+const ActionButton = styled(Button)`
+  min-width: 165px;
   height: 48px;
   border-radius: 25px;
   border: 2px solid ${({ theme }) => theme.color.black};
+  padding: 8px 24px;
   transition: all 0.15s;
   &:hover {
     color: ${({ theme }) => theme.color.white};
@@ -129,17 +152,16 @@ const FollowButton = styled(Button)`
 `
 
 const Biography = styled.div`
+  width: 100%;
+  line-height: 24px;
   margin: auto 0;
 `
 
-const SubTitle = styled.div`
-  border-bottom: 2px solid ${({ theme }) => theme.color.black};
-  box-sizing: border-box;
-  font-weight: bold;
-  font-size: 24px;
-  display: flex;
-  margin-bottom: 24px;
-  padding-bottom: 8px;
+const PlaylistSection = styled.section`
+  max-width: 1240px;
+  background-color: ${({ theme }) => theme.color.white};
+  margin: 0 auto;
+  position: relative;
 `
 
 const PlaylistBox = styled.div`

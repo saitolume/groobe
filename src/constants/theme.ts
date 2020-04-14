@@ -2,8 +2,11 @@ export const theme = {
   color: {
     black: '#222',
     white: '#fff',
-    gray: '#eee',
-    hoverd: '#efefefef'
+    darkWhite: '#f9f9f9',
+    gray: '#777',
+    lightGray: '#ddd',
+    hoverd: '#efefefef',
+    success: '#388e3c'
   }
 } as const
 

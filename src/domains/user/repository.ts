@@ -1,5 +1,6 @@
 import { firestore } from 'firebase-admin'
 import { User, Profile } from '~/domains/user/model'
+import { filterNonUndefinedParams } from '~/utils/filter'
 
 export class UserRepository {
   private ref: firestore.CollectionReference
@@ -23,6 +24,19 @@ export class UserRepository {
       imageUrl: ''
     }
     await this.ref.add(user)
+    return user
+  }
+
+  async update({ id, ...params }: Partial<User> & { id: User['id'] }) {
+    const {
+      docs: [doc]
+    } = await this.ref.where('id', '==', id).get()
+
+    const values = filterNonUndefinedParams(params)
+
+    await this.ref.doc(doc.id).update({ ...values })
+    const user: User = { ...(doc.data() as User), ...values }
+
     return user
   }
 }

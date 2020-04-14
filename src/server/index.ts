@@ -56,6 +56,7 @@ app.prepare().then(() => {
   )
 
   server.get('*', (req: Request, res: Response) => handle(req, res))
+  server.put('*', (req: Request, res: Response) => handle(req, res))
 
   http.createServer(server).listen(PORT, () => {
     console.log(`[ info ]  listening on http://localhost:${PORT}`)

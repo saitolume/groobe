@@ -8,7 +8,7 @@ type Props = {
   className?: string
 }
 
-const SearchBox: React.FC<Props> = ({ className }) => {
+const HeaderSearchBox: React.FC<Props> = ({ className }) => {
   const [word, setWord] = useState('')
 
   const handleChangeSearchField = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,4 +62,4 @@ const SearchButton = styled(Button)`
   padding: 0;
 `
 
-export default SearchBox
+export default HeaderSearchBox

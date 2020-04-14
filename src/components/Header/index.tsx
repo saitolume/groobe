@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import Button from '~/components/common/Button'
 import Icon from '~/components/common/Icon'
 import Thumbnail from '~/components/common/Thumbnail'
-import NavigationPopper from '~/components/Header/NavigationPopper'
-import SearchBox from '~/components/Header/SearchBox'
+import NavigationPopper from '~/components/Header/HeaderPopper'
+import SearchBox from '~/components/Header/HeaderSearchBox'
 import { CurrentUser } from '~/domains/user'
 
 type Props = {
@@ -34,7 +34,7 @@ const Header: React.FC<Props> = ({ currentUser }) => {
       <Navigation>
         {currentUser && (
           <>
-            <SubmitButton color="gray" flat>
+            <SubmitButton color="lightGray" flat round>
               <Icon name="upload" />
               <SubmitButtonText>プレイリストを投稿</SubmitButtonText>
             </SubmitButton>
@@ -87,11 +87,10 @@ const Navigation = styled.nav`
 
 const SubmitButton = styled(Button)`
   height: 40px;
-  border-radius: 25px;
   box-sizing: border-box;
   display: flex;
   margin: auto 12px auto 0;
-  padding: 0 18px;
+  padding: 0 24px;
   &:last-child {
     margin: auto 0;
   }

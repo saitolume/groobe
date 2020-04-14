@@ -11,7 +11,7 @@ type Props = {
   close: (event?: MouseEvent) => void
 }
 
-const NavigationPopper: React.FC<Props> = ({ currentUser, close }) => {
+const HeaderPopper: React.FC<Props> = ({ currentUser, close }) => {
   const ref = useRef<HTMLDivElement>(null)
 
   const handleoutsideClick = useCallback(
@@ -61,7 +61,7 @@ const Wrapper = styled.div`
   top: 64px; /* header height */
   right: 32px; /* header right padding */
   background-color: ${({ theme }) => theme.color.white};
-  border: 1px solid ${({ theme }) => theme.color.gray};
+  border: 1px solid ${({ theme }) => theme.color.lightGray};
   border-radius: 6px;
   box-sizing: border-box;
   padding-bottom: 8px;
@@ -70,7 +70,7 @@ const Wrapper = styled.div`
 const UserInfo = styled.a`
   width: 100%;
   cursor: pointer;
-  border-bottom: 1px solid ${({ theme }) => theme.color.gray};
+  border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
   box-sizing: border-box;
   display: flex;
   margin-bottom: 8px;
@@ -108,4 +108,4 @@ const LinkText = styled.div`
   margin: auto 0 auto 4px;
 `
 
-export default NavigationPopper
+export default HeaderPopper

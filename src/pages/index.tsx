@@ -8,7 +8,7 @@ import ContinueWithSpotify from '~/components/ContinueWithSpotify'
 import { useCurrentUser } from '~/hooks/useCurrentUser'
 
 const Index: NextPage = () => {
-  const currentUser = useCurrentUser()
+  const { currentUser } = useCurrentUser()
 
   return (
     <>
@@ -35,7 +35,7 @@ const Index: NextPage = () => {
 const Hero = styled.div`
   width: 100%;
   height: 50vh;
-  background-color: #ddd;
+  background-color: ${({ theme }) => theme.color.lightGray};
   display: flex;
   flex-direction: column;
 `
