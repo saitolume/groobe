@@ -19,7 +19,7 @@
     "@nicokaiser/passport-apple": "^0.2.1",
     "@types/uid-safe": "^2.1.2",
     "@types/webpack": "^4.41.7",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "core-js": "3",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
